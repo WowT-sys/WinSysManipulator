@@ -100,7 +100,3 @@ This program is provided for **educational and research purposes only**. The aut
 
 ## Contributing
 Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or submit a pull request.
-
----
-
-This README is structured to provide clear instructions, warnings, and context for your tool. It’s professional, informative, and ready for your GitHub repository!
