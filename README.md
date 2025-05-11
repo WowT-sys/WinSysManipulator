@@ -1,32 +1,18 @@
-# Windows Junction and Registry Manipulation Tool
+# WinSysManipulator
 
 ## Overview
-This program is a Windows-based tool written in C that performs two key operations:
-1. **Creates a junction (symbolic link)** between two directories.
-2. **Modifies the Windows registry** to schedule file operations during the next system reboot.
+**WinSysManipulator** is a Windows-based tool written in C that performs low-level system operations, including:
+1. **Creating junctions (symbolic links)** between directories.
+2. **Modifying the Windows registry** to schedule file operations during the next system reboot.
 
-It demonstrates low-level system manipulation techniques, including reparse point creation and registry key modification.
+This tool demonstrates advanced techniques for file system and registry manipulation using the Windows API.
 
 ---
 
 ## Features
 - **Junction Creation**: Creates a symbolic link (`C:\Program-Files`) that redirects to `C:\Program Files`.
 - **Registry Modification**: Updates the `PendingFileRenameOperations` registry key to schedule file operations for the next reboot.
-- **Low-Level System Access**: Uses Windows API functions like `DeviceIoControl` and `RegSetValueExW` for direct system manipulation.
-
----
-
-## How It Works
-
-### 1. **Junction Creation**
-The program creates a junction (`C:\Program-Files`) that redirects to `C:\Program Files`. This is achieved by:
-- Opening the source directory with reparse point manipulation flags.
-- Setting a reparse point using the `FSCTL_SET_REPARSE_POINT` control code.
-
-### 2. **Registry Modification**
-The program modifies the `PendingFileRenameOperations` registry key:
-- **Key**: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager`
-- **Value**: Adds a multi-string (`REG_MULTI_SZ`) entry to schedule file operations involving `CrowdStrike\CSFalconService.exe`.
+- **Low-Level System Access**: Utilizes Windows API functions like `DeviceIoControl` and `RegSetValueExW` for direct system manipulation.
 
 ---
 
@@ -37,26 +23,36 @@ The program modifies the `PendingFileRenameOperations` registry key:
 
 ---
 
-## Usage
+## Installation
 
 ### 1. **Clone the Repository**
-Clone the repository or download the source code:
+Clone the repository to your local machine:
 ```bash
-git clone https://github.com/your-username/junction-registry-tool.git
-cd junction-registry-tool
+git clone https://github.com/WowT-sys/WinSysManipulator.git
+cd WinSysManipulator
 ```
 
 ### 2. **Compile the Program**
 Compile the program using a C compiler. For example:
 ```bash
-gcc -o junction-tool junction-tool.c
+gcc -o WinSysManipulator WinSysManipulator.c
 ```
 
 ### 3. **Run the Program**
 Run the compiled program as an administrator:
 ```bash
-junction-tool.exe
+WinSysManipulator.exe
 ```
+
+---
+
+## Usage
+
+### Junction Creation
+The program creates a junction (`C:\Program-Files`) that redirects to `C:\Program Files`. This allows redirection of file or directory access.
+
+### Registry Modification
+The program modifies the `PendingFileRenameOperations` registry key to schedule file operations involving `CrowdStrike\CSFalconService.exe` for the next system reboot.
 
 ---
 
@@ -104,3 +100,7 @@ This program is provided for **educational and research purposes only**. The aut
 
 ## Contributing
 Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or submit a pull request.
+
+---
+
+This README is structured to provide clear instructions, warnings, and context for your tool. It’s professional, informative, and ready for your GitHub repository!
